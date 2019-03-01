@@ -1,0 +1,9 @@
+volume_root_folder: "/docker-volumes"
+
+nginx:
+  volume_folder: "{{ volume_root_folder }}/nginx"
+
+default:
+  domain: ung.prosa.dk
+
+letsencrypt_email: "{{ admin_email }}"

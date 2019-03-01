@@ -1,0 +1,16 @@
+---
+- name: watchtower container
+  docker_container:
+    name: watchtower
+    image: v2tec/watchtower
+    restart_policy: unless-stopped
+    labels:
+      com.centurylinklabs.watchtower.enable: "true"
+    networks:
+      - name: external_services
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: ["--label-enable"]
+    env:
+      WATCHTOWER_NOTIFICATIONS: slack
+      WATCHTOWER_NOTIFICATION_SLACK_HOOK_URL: "{{ slack_hook_url }}"

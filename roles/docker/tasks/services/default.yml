@@ -1,0 +1,14 @@
+---
+- name: default container
+  docker_container:
+    name: default
+    image: jeppeernst/ung.prosa.dk-default:latest
+    restart_policy: unless-stopped
+    labels:
+      com.centurylinklabs.watchtower.enable: "true"
+    networks:
+      - name: external_services
+    env:
+      VIRTUAL_HOST: "{{ default.domain }}"
+      LETSENCRYPT_HOST: "{{ default.domain }}"
+      LETSENCRYPT_EMAIL: "{{ letsencrypt_email }}"

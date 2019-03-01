@@ -1,0 +1,21 @@
+---
+- name: ensure dependent python modules are installed
+  pip:
+    name: "{{item}}"
+    state: present
+  with_items:
+    - docker-py==1.10.6
+    - docker-compose==1.9.0
+
+- name: ensure external_services network exists
+  docker_network:
+    name: external_services
+
+- name: ensure that root folder exists
+  file:
+    path: "{{ volume_root_folder }}"
+    state: directory
+
+- name: ensure services are setup
+  include_tasks: "services/{{ item }}.yml"
+  with_items: "{{ services }}"

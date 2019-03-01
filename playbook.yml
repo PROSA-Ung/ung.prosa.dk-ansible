@@ -1,0 +1,14 @@
+---
+- hosts: all
+  gather_facts: False
+  become: true
+  vars:
+    services:
+      - nginx-proxy
+      - default
+      - watchtower
+  tasks:
+    - import_role:
+        name: base
+    - import_role:
+        name: docker

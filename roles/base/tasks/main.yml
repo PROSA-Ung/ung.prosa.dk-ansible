@@ -1,0 +1,9 @@
+---
+- name: Install necessary packages
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - aptitude
+    - python3-pip
+    - apparmor
