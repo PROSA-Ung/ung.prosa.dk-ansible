@@ -18,6 +18,8 @@
     name: nginx-proxy
     image: jwilder/nginx-proxy
     restart_policy: unless-stopped
+    labels:
+      com.centurylinklabs.watchtower.enable: "true"
     networks:
       - name: external_services
     published_ports:
@@ -36,6 +38,8 @@
     name: nginx-proxy-le
     image: jrcs/letsencrypt-nginx-proxy-companion
     restart_policy: unless-stopped
+    labels:
+      com.centurylinklabs.watchtower.enable: "true"
     volumes:
       - "{{ nginx.volume_folder }}/vhost:/etc/nginx/vhost.d"
       - "{{ nginx.volume_folder }}/html:/usr/share/nginx/html"

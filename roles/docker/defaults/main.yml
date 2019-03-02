@@ -4,6 +4,10 @@ nginx:
   volume_folder: "{{ volume_root_folder }}/nginx"
 
 default:
-  domain: ung.prosa.dk
+  domain: "{{ root_domain }}"
+
+rocket_chat:
+  domain: "chat.{{ root_domain }}"
+  volume_folder: "{{ volume_root_folder }}/rocket-chat"
 
 letsencrypt_email: "{{ admin_email }}"

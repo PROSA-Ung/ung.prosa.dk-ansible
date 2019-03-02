@@ -1,0 +1,33 @@
+---
+- name: ensure rocket_chat network exists
+  docker_network:
+    name: rocket_chat
+
+- name: "rocket-chat-db"
+  docker_container:
+    name: "rocket-chat-db"
+    image: mongo:3.0
+    restart_policy: unless-stopped
+    networks:
+      - name: rocket_chat
+    volumes:
+      - "{{ rocket_chat.volume_folder }}/db:/data/db"
+    command: ["--smallfiles"]
+
+- name: "rocket-chat"
+  docker_container:
+    name: "rocket-chat"
+    image: rocket.chat
+    restart_policy: unless-stopped
+    labels:
+      com.centurylinklabs.watchtower.enable: "true"
+    networks:
+      - name: external_services
+      - name: rocket_chat
+    links:
+      - "rocket-chat-db:db"
+    env:
+      VIRTUAL_HOST: "{{ rocket_chat.domain }}"
+      VIRTUAL_PORT: 3000
+      LETSENCRYPT_HOST: "{{ rocket_chat.domain }}"
+      LETSENCRYPT_EMAIL: "{{ letsencrypt_email }}"
