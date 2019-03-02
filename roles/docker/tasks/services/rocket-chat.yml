@@ -28,6 +28,6 @@
       - "rocket-chat-db:db"
     env:
       VIRTUAL_HOST: "{{ rocket_chat.domain }}"
-      VIRTUAL_PORT: 3000
+      VIRTUAL_PORT: "3000"
       LETSENCRYPT_HOST: "{{ rocket_chat.domain }}"
       LETSENCRYPT_EMAIL: "{{ letsencrypt_email }}"
