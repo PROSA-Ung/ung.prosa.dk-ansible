@@ -1,0 +1,20 @@
+---
+- name: ensure netdata container is running
+  docker_container:
+    name: netdata
+    image: netdata/netdata
+    capabilities:
+      - SYS_PTRACE
+    security_opts:
+      - apparmor:unconfined
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - name: external_services
+    env:
+      VIRTUAL_HOST : "{{ netdata.domain }}"
+      LETSENCRYPT_HOST: "{{ netdata.domain }}"
+      LETSENCRYPT_EMAIL: "{{ letsencrypt_email }}"
+      PGID: "999"

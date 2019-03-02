@@ -4,8 +4,6 @@
     name: watchtower
     image: v2tec/watchtower
     restart_policy: unless-stopped
-    labels:
-      com.centurylinklabs.watchtower.enable: "true"
     networks:
       - name: external_services
     volumes:

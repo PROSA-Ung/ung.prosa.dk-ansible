@@ -3,6 +3,7 @@
   docker_container:
     name: default
     image: prosaung/ung.prosa.dk-default:latest
+    pull: true
     restart_policy: unless-stopped
     labels:
       com.centurylinklabs.watchtower.enable: "true"

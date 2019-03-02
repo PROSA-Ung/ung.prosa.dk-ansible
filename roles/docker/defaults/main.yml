@@ -1,4 +1,5 @@
 volume_root_folder: "/docker-volumes"
+letsencrypt_email: "{{ admin_email }}"
 
 nginx:
   volume_folder: "{{ volume_root_folder }}/nginx"
@@ -10,4 +11,5 @@ rocket_chat:
   domain: "chat.{{ root_domain }}"
   volume_folder: "{{ volume_root_folder }}/rocket-chat"
 
-letsencrypt_email: "{{ admin_email }}"
+netdata:
+  domain: "netdata.{{ root_domain }}"
