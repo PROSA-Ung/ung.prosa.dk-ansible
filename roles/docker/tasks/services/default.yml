@@ -2,7 +2,7 @@
 - name: default container
   docker_container:
     name: default
-    image: jeppeernst/ung.prosa.dk-default:latest
+    image: prosaung/ung.prosa.dk-default:latest
     restart_policy: unless-stopped
     labels:
       com.centurylinklabs.watchtower.enable: "true"
