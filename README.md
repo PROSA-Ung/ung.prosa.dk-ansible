@@ -15,7 +15,7 @@ Then you can deploy the playbook by running `ansible-playbook -i inventory playb
 ```
 env:
     VIRTUAL_HOST: "{{ servicename.domain }}"
-    VIRTUAL_PORT: 3000 #can be omitted if the service runs on port 80 by default!
+    VIRTUAL_PORT: 3000 #can be omitted if the service runs on port 80 by default, or if it only exposes one port.
     LETSENCRYPT_HOST: "{{ servicename.domain }}"
     LETSENCRYPT_EMAIL: "{{ letsencrypt_email }}"
 ```
