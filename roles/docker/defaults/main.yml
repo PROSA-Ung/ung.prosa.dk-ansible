@@ -13,3 +13,7 @@ rocket_chat:
 
 netdata:
   domain: "netdata.{{ root_domain }}"
+
+itpol_valg:
+  domain: "valg.prosa.dk"
+  volume_folder: "{{ volume_root_folder }}/itpol_valg"

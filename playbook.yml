@@ -12,6 +12,7 @@
       - rocket-chat
       - watchtower
       - netdata
+      - itpol_valg
   tasks:
     - import_role:
         name: base
