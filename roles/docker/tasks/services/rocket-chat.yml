@@ -6,13 +6,13 @@
 - name: "rocket-chat-db"
   docker_container:
     name: "rocket-chat-db"
-    image: mongo:3.0
+    image: mongo:3.4
     restart_policy: unless-stopped
     networks:
       - name: rocket_chat
     volumes:
       - "{{ rocket_chat.volume_folder }}/db:/data/db"
-    command: ["--smallfiles"]
+    command: ["--smallfiles", "--replSet", "rs01"]
 
 - name: "rocket-chat"
   docker_container:
@@ -20,13 +20,14 @@
     image: rocket.chat
     restart_policy: unless-stopped
     labels:
-      com.centurylinklabs.watchtower.enable: "true"
+      com.centurylinklabs.watchtower.enable: "false"
     networks:
       - name: external_services
       - name: rocket_chat
     links:
       - "rocket-chat-db:db"
     env:
+      MONGO_OPLOG_URL: mongodb://db:27017/local?replSet=rs01
       VIRTUAL_HOST: "{{ rocket_chat.domain }}"
       VIRTUAL_PORT: "3000"
       LETSENCRYPT_HOST: "{{ rocket_chat.domain }}"
