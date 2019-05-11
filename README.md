@@ -22,6 +22,6 @@ env:
 These variables tell the Nginx-proxy container where to route it's traffic, and what domains to issue certificates for.  
 ```
 labels:
-  com.centurylinklabs.watchtower.enable: "true"
+  com.ouroboros.enable: "true"
 ```
-We have a watchtower service running that you can activate by adding the above label. it checks every 5 minutes if there's a newer image, if there is it'll pull it and replace the currently running container with the new image.
+We have a ouroboros service running that you can activate by adding the above label. it checks every 5 minutes if there's a newer image, if there is it'll pull it and replace the currently running container with the new image.

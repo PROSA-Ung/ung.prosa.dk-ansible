@@ -30,7 +30,7 @@
     image: prosaung/valg.prosa.dk-default
     restart_policy: unless-stopped
     labels:
-      com.centurylinklabs.watchtower.enable: "true"
+      com.ouroboros.enable: "true"
     networks:
       - name: itpol_valg
       - name: external_services

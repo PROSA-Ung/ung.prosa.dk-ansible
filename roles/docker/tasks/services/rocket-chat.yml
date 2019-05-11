@@ -20,7 +20,7 @@
     image: rocket.chat
     restart_policy: unless-stopped
     labels:
-      com.centurylinklabs.watchtower.enable: "false"
+      com.ouroboros.enable: "false"
     networks:
       - name: external_services
       - name: rocket_chat

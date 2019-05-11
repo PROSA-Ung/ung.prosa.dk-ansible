@@ -10,7 +10,7 @@
       - nginx-proxy
       - default
       - rocket-chat
-      - watchtower
+      - ouroboros
       - netdata
       - itpol_valg
   tasks:
