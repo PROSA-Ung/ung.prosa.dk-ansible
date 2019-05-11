@@ -45,3 +45,4 @@
       DB_NAME: valg
       DB_USER: "{{ itpol_valg_secrets.db_user }}"
       DB_PASS: "{{ itpol_valg_secrets.db_pass }}"
+      ADMIN_UID: "{{ itpol_valg_secrets.admin_uid }}"
